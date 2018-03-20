@@ -1,0 +1,14 @@
+<div class="col-md-9">
+    <h3>New Form</h3>
+    <div class="input-group">
+        <label>Title</label>
+        <input type="text" class="form-control" [(ngModel)]='form.title'>
+    </div>
+
+    <div class="input-group">
+        <label>Description</label>
+        <textarea class="form-control" style="resize: vertical;" rows="3"  [(ngModel)]='form.description'></textarea>
+    </div>
+    <button type="button" class="btn btn-default" (click)='onCreateClick()'>Create</button>
+    <button type="button" class="btn btn-default" (click)='onCancelClick()'>Cancel</button>
+</div>

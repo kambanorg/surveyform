@@ -1,0 +1,27 @@
+<div class="col-md-8">
+    <div class="panel panel-primary">
+        <div class="panel-body">
+            <div class="row" *ngIf='form'>
+                <div class="crop">
+                    <div class="page-header" (click)='onClick()' style="cursor: pointer">
+                            <button type="button" class="btn btn-default" (click)='onSaveClick()'>Save</button>
+                            <button type="button" class="btn btn-default" (click)='onPreviewClick()'>Preview</button>
+                        <h1>{{form.title}}</h1>
+                        <h5>{{form.description}}</h5>
+                    </div>
+                    <div class="alert alert-success" role="alert">
+                        <pm-new-field-template [allFields]='fieldList' (fieldAdded)='newFieldAdded($event)'>
+                        </pm-new-field-template>
+                    </div>
+                    <div *ngFor='let field of fieldList'>
+                        <pm-single-line *ngIf='field && field.type == "single-line-field"' [value]='field' (fieldClicked)='onFieldClicked($event)' (deleteClicked)='onFieldDeleteClicked($event)'></pm-single-line>
+                        <pm-multi-line *ngIf='field && field.type == "multi-line-field"' [value]='field' (fieldClicked)='onFieldClicked($event)' (deleteClicked)='onFieldDeleteClicked($event)'></pm-multi-line>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-3">
+    <pm-property-window [(typeValue)]='selectedField' [(formValue)]='form'></pm-property-window>
+</div>
